@@ -1,0 +1,19 @@
+[Unit]
+# Auto-generated, DO NOT EDIT
+Description=Service for snap application jenkins.jenkins
+Requires=snap-jenkins-4527.mount
+Wants=network.target
+After=snap-jenkins-4527.mount network.target snapd.apparmor.service
+X-Snappy=yes
+
+[Service]
+EnvironmentFile=-/etc/environment
+ExecStart=/usr/bin/snap run jenkins
+SyslogIdentifier=jenkins.jenkins
+Restart=on-failure
+WorkingDirectory=/var/snap/jenkins/4527
+TimeoutStopSec=30
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=Mount unit for jenkins, revision 4527
+After=snapd.mounts-pre.target
+Before=snapd.mounts.target
+Before=local-fs.target
+
+[Mount]
+What=/var/lib/snapd/snaps/jenkins_4527.snap
+Where=/snap/jenkins/4527
+Type=squashfs
+Options=nodev,ro,x-gdu.hide,x-gvfs-hide
+LazyUnmount=yes
+
+[Install]
+WantedBy=snapd.mounts.target
+WantedBy=multi-user.target
